@@ -19,5 +19,8 @@
     "bugs": {
         "url": "https://github.com/nicejacket/tesla-tpl/issues"
     },
-    "homepage": "https://github.com/nicejacket/tesla-tpl"
+    "homepage": "https://github.com/nicejacket/tesla-tpl",
+    "devDependencies": {
+        "gulp": "^3.8.8"
+    }
 }
