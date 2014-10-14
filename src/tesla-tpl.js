@@ -69,6 +69,8 @@
     //TODO 实现模板引擎的代码实现
     function Engine(tpl, options) {
         this.code = "";
+        this.tpl = tpl;
+        this.options = options;
 
         this.render = function () {
 
@@ -81,10 +83,32 @@
 
     //模板逻辑处理，字符转义等方法实现通过原型实现以降低内存占用
     Engine.prototype = {
-        langAnalyze: function () {
+        _langAnalyze: function () {
+            var _reg = new RegExp(this.options.openTag + "("
+                + "[^" + this.options.closeTag + "]*" + ")" + this.options.closeTag, "igm");
 
+            this.tpl.replace(_reg, function (pattern, str) {
+                return parse(str);
+            });
         }
     };
+
+    function parse(str) {
+        var arr = str.split(/\s+/);
+        switch (arr.shift()) {
+            case "each" :
+                break;
+            case "if" :
+                break;
+            case "else" :
+                break;
+            case "html" :
+                break;
+            default :
+                break;
+        }
+        ;
+    }
 
     function compile(tpl, options) {
         try {
