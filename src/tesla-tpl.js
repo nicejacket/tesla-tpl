@@ -17,7 +17,7 @@
                 }
             }
 
-            return compile(tpl, options);
+            return compile(tpl, options).render(data);
         },
         cache = $tpl.cache = {},
         events = {},
@@ -68,12 +68,34 @@
         }
     };
 
+    //TODO 实现模板引擎的代码实现
+    function Engine(tpl, options) {
+        this.template = "";
+
+        return (function () {
+
+        })();
+    }
+
+    //模板逻辑处理，字符转义等方法实现通过原型实现以降低内存占用
+    Engine.prototype = {
+
+    };
+
     function compile(tpl, options) {
-        if (options.cache && cache[tpl]) {
-            return cache[tpl];
+        try {
+            var engine = cache[tpl] ? cache[tpl] : new Engine(tpl, options);
+
+            if (options.cache) {
+                cache[tpl] = engine;
+            }
+
+            return engine;
+        } catch (e) {
+            $tpl.on("error", e);
+            return {render: function () {
+            }};
         }
-
-
     }
 
     if (typeof define === "function") {
