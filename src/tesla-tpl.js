@@ -24,9 +24,7 @@
         defaults = {
             openTag: "@{",
             closeTag: "}",
-            escape: true,
-            cache: true,
-            compress: false
+            cache: true
         };
 
     $tpl.on = function (name, callback) {
@@ -70,16 +68,22 @@
 
     //TODO 实现模板引擎的代码实现
     function Engine(tpl, options) {
-        this.template = "";
+        this.code = "";
 
-        return (function () {
+        this.render = function () {
+
+        };
+
+        (function () {
 
         })();
     }
 
     //模板逻辑处理，字符转义等方法实现通过原型实现以降低内存占用
     Engine.prototype = {
+        langAnalyze: function () {
 
+        }
     };
 
     function compile(tpl, options) {
